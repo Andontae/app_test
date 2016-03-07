@@ -15,6 +15,29 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/jquery-2.2.1.min.js"></script>
+<script src="countries.json"></script>
+<script type="text/javascript">
+	$(window).scroll(function() {
+		var fromTopPx = 200; // distance to trigger
+		var scrolledFromtop = $(window).scrollTop();
+		if (scrolledFromtop > fromTopPx) {
+			$('nav').addClass('scrolled');
+		} else {
+			$('nav').removeClass('scrolled');
+		}
+	});
+</script>
+<script>
+	function get_countries(countries) {
+		var out = "";
+		var i;
+		for (i = 0; i < countries.length; i++) {
+			var tmp = countries[i].name;
+			out += '<option value="' + tmp + '">' + tmp + '</option>';
+		}
+		document.getElementById("countries-list").innerHTML = out;
+	}
+</script>
 </head>
 
 <body>
@@ -168,24 +191,37 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-xs-6 col-sm-6 col-md-4">
-					<img class="img-responsive"
-						alt="Link 1" title="Link 1" src="images/image-article1.jpg" />
-					<div class="caption overlay">
+				<div class="col-xs-6 col-sm-6 col-md-4 c2a-img">
+					<a href="#" title="Link 1"> <img class="img-responsive"
+						alt="Link 1" title="Link 1" src="images/image-article1.jpg" /></a>
+					<div class="caption overlay-small">
 						<p>
-							<a href="#" title="Link 1">January 2016 | <strong>Perth, Australia</strong></a>
+							<a href="#" title="Link 1">January 2016 | <strong>Perth,
+									Australia</strong></a>
 						</p>
 					</div>
 				</div>
-<!-- 			</div> -->
-<!-- 			<div class="row"> -->
-				<div class="col-xs-6 col-sm-6 col-md-4">
+				<!-- 			</div> -->
+				<!-- 			<div class="row"> -->
+				<div class="col-xs-6 col-sm-6 col-md-4 c2a-img">
 					<a href="#" title="Link 2"><img class="img-responsive"
 						alt="Link 2" title="Link 2" src="images/image-article2.jpg" /></a>
+					<div class="caption overlay-small">
+						<p>
+							<a href="#" title="Link 1">January 2016 | <strong>Perth,
+									Australia</strong></a>
+						</p>
+					</div>
 				</div>
-				<div class="col-xs-12 col-sm-12 col-md-8">
+				<div class="col-xs-12 col-sm-12 col-md-8 c2a-img">
 					<a href="#" title="Link 3"><img class="img-responsive"
 						alt="Link 3" title="Link 3" src="images/image-article3.jpg" /></a>
+					<div class="caption overlay-wide">
+						<p>
+							<a href="#" title="Link 1">March 2016 | <strong>Mount
+									Olympus</strong></a>
+						</p>
+					</div>
 				</div>
 			</div>
 			<div class="row homepage-subscribe">
@@ -213,11 +249,17 @@
 			</div>
 			<div class="col-md-3">
 				<p class="footer-header">Contact</p>
-				<p class="footer-text">www.atlastitan.dev 76 Regent Rd, Sea
-					Point e-mail@atlastitan.com.au +(27) 21 439 9030</p>
+				<p class="footer-text">
+					www.atlastitan.dev<br />76 Regent Rd, Sea Point<br /> <span
+						class="email-add"><a href="mailto:e-mail@atlastitan.com.au"
+						title="Contact Us">e-mail@atlastitan.com.au</a></span> <span
+						class="phone-no"><a href="tel:+6627214399030"
+						title="Contact Us">+(27) 21 439 9030</a></span>
+				</p>
 			</div>
 			<div class="col-md-3">
 				<p class="footer-header">Location Information</p>
+				<select id="countries-list"></select>
 				<p class="footer-text">
 					<em>“Ut eni et illi dolore magnam aliqua et aerat voluptatem.”</em>
 				</p>

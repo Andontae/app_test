@@ -3,13 +3,16 @@
 p{margin: 15px 0 15px;}
 
 .container-fluid{padding-left: 0;padding-right: 0;}
+.img-responsive{margin: 0 auto;}
+.phone-no, .email-add{display: inline-block;}
+.phone-no a, .email-add a{color: #9e9e9e;}
 
 .navbar-default{background-color: transparent;border-color: transparent;}
 .navbar-default .navbar-nav>li>a, .navbar-default{color: #ffffff;}
 .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover{color: #ffffff;border-bottom: 2px solid #b7c8d9;}
 .navbar-default .navbar-brand{color: #ffffff;}
 .navbar-default .navbar-brand:focus, .navbar-default .navbar-brand:hover{color: #ffffff;text-decoration: underline;}
-.navbar-fixed-top, .dropdown-menu, .dropdown-menu li:hover, .navbar-default .navbar-nav>.open>a {background: rgba(0, 0, 0, 0.6) !important;}
+.scrolled{background: rgba(0, 0, 0, 0.6) !important;}
 .navbar-default .navbar-nav>.open>a, .dropdown-menu li a{color: #ffffff;}
 .dropdown-menu li:hover a{color: #ffffff;text-decoration: underline;background: transparent;}
 
@@ -42,14 +45,30 @@ p.article-heading{text-align: center;}
 .panel-heading [data-toggle="collapse"].collapsed:after{content: "\002b";}
 .panel-default>.panel-heading.homepage{background: #ffffff;border: 1px solid #f3f3f3;}
 
-.caption.overlay{position: absolute;bottom: 0;width: 92%;word-break: break-word;text-align: center;padding: 20px 0;}
-.caption.overlay:hover{background: url("images/overlay-img.png");}
-.caption.overlay a{color: #ffffff;}
+.caption.overlay-small{position: absolute;bottom: 0;width: 92%;word-break: break-word;text-indent: 20px;padding: 20px 0;}
+.caption.overlay-wide{position: absolute;bottom: 0;width: 96%;word-break: break-word;text-indent: 20px;padding: 20px 0;}
+.c2a-img:hover .caption.overlay-small, .c2a-img:hover .caption.overlay-wide{background: url("images/overlay-img.png");text-decoration: underline;}
+.caption.overlay-small a, .caption.overlay-wide a{color: #ffffff;}
 
 @media only screen and (min-width: 320px) and (max-width: 529px){
-    .banner-text {
-    	visibility: hidden;
-    }
+    .banner-text {visibility: hidden;}
+    .caption.overlay-wide{width: 90%;padding: 0;text-indent: 0;}
+    .caption.overlay-small{width: 80%;padding: 0;text-indent: 0;}
+}
+
+@media only screen and (min-width: 480px){
+    .caption.overlay-wide{width: 93%;}
+    .caption.overlay-small{width: 87%;padding-bottom: 0;}
+}
+
+@media only screen and (min-width: 640px){
+    .caption.overlay-wide{width: 95%;}
+    .caption.overlay-small{width: 90%;padding-bottom: 20px;}
+}
+
+@media only screen and (min-width: 768px){
+    .caption.overlay-wide{width: 96%;}
+    .caption.overlay-small{width: 92%;}
 }
 
 @media only screen and (min-width: 920px) {
