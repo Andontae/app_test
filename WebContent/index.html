@@ -15,8 +15,23 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/jquery-2.2.1.min.js"></script>
-<script src="countries.json"></script>
 <script type="text/javascript">
+	$(document).ready(function() {
+		$('.c2a-hover-show').hide();
+		$('.c2a-img').hover(function() {
+			$(this).find('.c2a-show-text').hide();
+			$(this).find('.c2a-hover-show').show();
+		}, function() {
+			$(this).find('.c2a-hover-show').hide();
+			$(this).find('.c2a-show-text').show();
+		});
+
+		$('a').click(function() {
+			$('a.active').removeClass('active');
+			$(this).addClass('active');
+		});
+	})
+
 	$(window).scroll(function() {
 		var fromTopPx = 200; // distance to trigger
 		var scrolledFromtop = $(window).scrollTop();
@@ -26,17 +41,6 @@
 			$('nav').removeClass('scrolled');
 		}
 	});
-</script>
-<script>
-	function get_countries(countries) {
-		var out = "";
-		var i;
-		for (i = 0; i < countries.length; i++) {
-			var tmp = countries[i].name;
-			out += '<option value="' + tmp + '">' + tmp + '</option>';
-		}
-		document.getElementById("countries-list").innerHTML = out;
-	}
 </script>
 </head>
 
@@ -69,26 +73,13 @@
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
-				<!-- <ul class="nav navbar-nav">
-					<li class="active"><a href="#">HOME<span class="sr-only">(current)</span></a></li>
-					<li><a href="#">ABOUT</a></li>
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false">SALES<span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="#">TEST 1</a></li>
-							<li><a href="#">TEST 2</a></li>
-							<li><a href="#">TEST 3</a></li>
-						</ul>
-					</li>
-					<li><a href="#">VACANCIES</a></li>
-				</ul> -->
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#" title="Home">HOME</a></li>
+					<li><a href="#" title="Home" class="active">HOME</a></li>
 					<li><a href="#" title="About">ABOUT</a></li>
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false">SALES<span class="caret"></span></a>
+					<li class="dropdown"><a href="#"
+						class="dropdown-toggle sales-link" data-toggle="dropdown"
+						role="button" aria-haspopup="true" aria-expanded="false">SALES<span
+							class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><a href="#" title="Test 1">TEST 1</a></li>
 							<li><a href="#" title="Test 2">TEST 2</a></li>
@@ -136,12 +127,12 @@
 							<div class="panel-heading homepage">
 								<h4 class="panel-title">
 									<a class="accordion-toggle" data-toggle="collapse"
-										data-parent="#accordion" href="#collapseOne">January 2016
-										| <strong>Perth, Australia</strong>
+										data-parent="#accordion" href="#collapse1">January 2016 |
+										<strong>Perth, Australia</strong>
 									</a>
 								</h4>
 							</div>
-							<div id="collapseOne" class="panel-collapse collapse in">
+							<div id="collapse1" class="panel-collapse collapse in">
 								<div class="panel-body">Lorem ipsum dolor sit amet,
 									consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
 									Aenean massa. Cum sociis natoque penatibus et magnis dis
@@ -155,12 +146,12 @@
 							<div class="panel-heading homepage">
 								<h4 class="panel-title">
 									<a class="accordion-toggle collapsed" data-toggle="collapse"
-										data-parent="#accordion" href="#collapseTen">Feburary 2015
-										| <strong>Cape Town, South Africa</strong>
+										data-parent="#accordion" href="#collapse2">Feburary 2015 |
+										<strong>Cape Town, South Africa</strong>
 									</a>
 								</h4>
 							</div>
-							<div id="collapseTen" class="panel-collapse collapse">
+							<div id="collapse2" class="panel-collapse collapse">
 								<div class="panel-body">Lorem ipsum dolor sit amet,
 									consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
 									Aenean massa. Cum sociis natoque penatibus et magnis dis
@@ -174,12 +165,12 @@
 							<div class="panel-heading homepage">
 								<h4 class="panel-title">
 									<a class="accordion-toggle collapsed" data-toggle="collapse"
-										data-parent="#accordion" href="#collapseEleven">March 2016
-										| <strong>Mount Olympus</strong>
+										data-parent="#accordion" href="#collapse3">March 2016 | <strong>Mount
+											Olympus</strong>
 									</a>
 								</h4>
 							</div>
-							<div id="collapseEleven" class="panel-collapse collapse">
+							<div id="collapse3" class="panel-collapse collapse">
 								<div class="panel-body">Lorem ipsum dolor sit amet,
 									consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
 									Aenean massa. Cum sociis natoque penatibus et magnis dis
@@ -194,32 +185,62 @@
 				<div class="col-xs-6 col-sm-6 col-md-4 c2a-img">
 					<a href="#" title="Link 1"> <img class="img-responsive"
 						alt="Link 1" title="Link 1" src="images/image-article1.jpg" /></a>
-					<div class="caption overlay-small">
+					<div class="caption overlay-small c2a-show-text">
 						<p>
 							<a href="#" title="Link 1">January 2016 | <strong>Perth,
 									Australia</strong></a>
 						</p>
 					</div>
+					<div class="caption overlay-small c2a-hover-show">
+						<p>
+							<a href="#" title="Link 1" class="c2a-link-text"> Cras eu
+								blandit metus,<br />a Cape Town elementum.<br /> <span
+								class="author-name">by <author>John Doe</author></span> <br />
+								<span class="author-date">Posted <time pubdate
+										datetime="2016-02-11" title="Feburary 11st, 2016">on
+										02-11-16</time></span>
+							</a>
+						</p>
+					</div>
 				</div>
-				<!-- 			</div> -->
-				<!-- 			<div class="row"> -->
-				<div class="col-xs-6 col-sm-6 col-md-4 c2a-img">
+				<div class="col-xs-6 col-sm-6 col-md-4 c2a-img fix-992">
 					<a href="#" title="Link 2"><img class="img-responsive"
 						alt="Link 2" title="Link 2" src="images/image-article2.jpg" /></a>
-					<div class="caption overlay-small">
+					<div class="caption overlay-small c2a-show-text">
 						<p>
-							<a href="#" title="Link 1">January 2016 | <strong>Perth,
-									Australia</strong></a>
+							<a href="#" title="Link 1">Feburary 2015 | <strong>Cape
+									Town, South Africa</strong></a>
+						</p>
+					</div>
+					<div class="caption overlay-small c2a-hover-show">
+						<p>
+							<a href="#" title="Link 1" class="c2a-link-text"> Cras eu
+								blandit metus,<br />a Cape Town elementum.<br /> <span
+								class="author-name">by <author>John Doe</author></span> <br />
+								<span class="author-date">Posted <time pubdate
+										datetime="2016-02-11" title="Feburary 11st, 2016">on
+										02-11-16</time></span>
+							</a>
 						</p>
 					</div>
 				</div>
 				<div class="col-xs-12 col-sm-12 col-md-8 c2a-img">
 					<a href="#" title="Link 3"><img class="img-responsive"
 						alt="Link 3" title="Link 3" src="images/image-article3.jpg" /></a>
-					<div class="caption overlay-wide">
+					<div class="caption overlay-wide c2a-show-text">
 						<p>
 							<a href="#" title="Link 1">March 2016 | <strong>Mount
 									Olympus</strong></a>
+						</p>
+					</div>
+					<div class="caption overlay-wide c2a-hover-show">
+						<p>
+							<a href="#" title="Link 1" class="c2a-link-text"> Cras eu
+								blandit metus<br /> <span class="author-name">by <author>John
+									Doe</author></span> <br /> <span class="author-date">Posted <time
+										pubdate datetime="2016-02-11" title="Feburary 11st, 2016">on
+										02-11-16</time></span>
+							</a>
 						</p>
 					</div>
 				</div>
@@ -259,7 +280,26 @@
 			</div>
 			<div class="col-md-3">
 				<p class="footer-header">Location Information</p>
-				<select id="countries-list"></select>
+				<select id="countries-list" name="select">
+					<option value="">Select Your Country</option>
+				</select>
+				<script>
+					var out = '<option value="">Select Your Country</option>';
+					var i;
+					$
+							.getJSON(
+									"countries.json",
+									function(json) {
+										console.log(json); // this will show the info it in firebug console
+										for (i = 0; i < json[0]['countries'].length; i++) {
+											var tmp = json[0]['countries'][i]['name'];
+											out += '<option value="' + tmp + '">'
+													+ tmp + '</option>';
+										}
+										document
+												.getElementById("countries-list").innerHTML = out;
+									});
+				</script>
 				<p class="footer-text">
 					<em>“Ut eni et illi dolore magnam aliqua et aerat voluptatem.”</em>
 				</p>
@@ -269,7 +309,7 @@
 				<ul class="footer-nav">
 					<li><a href="#" title="General">General</a></li>
 					<li><a href="#" title="Development">Development</a></li>
-					<li><a href="#" title="Sales">Sales</a></li>
+					<li class="sales-link"><a href="#" title="Sales">Sales</a></li>
 					<li><a href="#" title="Appraisals">Appraisals</a></li>
 				</ul>
 			</div>
