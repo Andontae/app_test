@@ -8,6 +8,7 @@
 <title>Front-End Development Assessment</title>
 <link type="text/css" href="css/bootstrap.min.css" rel="stylesheet" />
 <link type="text/css" href="style.css" rel="stylesheet" />
+<link type="text/css" href="responsive_style.css" rel="stylesheet" />
 <link
 	href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic'
 	rel='stylesheet' type='text/css' />
@@ -17,6 +18,7 @@
 <script type="text/javascript" src="js/jquery-2.2.1.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
+		//show and hide text on 'click to action' area
 		$('.c2a-hover-show').hide();
 		$('.c2a-img').hover(function() {
 			$(this).find('.c2a-show-text').hide();
@@ -26,12 +28,14 @@
 			$(this).find('.c2a-show-text').show();
 		});
 
+		// active state on current active link
 		$('a').click(function() {
 			$('a.active').removeClass('active');
 			$(this).addClass('active');
 		});
 	})
 
+	// change main nav's background
 	$(window).scroll(function() {
 		var fromTopPx = 200; // distance to trigger
 		var scrolledFromtop = $(window).scrollTop();
@@ -46,6 +50,7 @@
 
 <body>
 	<div class="container-fluid banner-wrap">
+		<!-- 	Banner -->
 		<img class="img-responsive" src="images/static-banner.jpg"
 			title="Banner" alt="Banner" />
 		<div class="banner-text">
@@ -56,6 +61,7 @@
 				More</button>
 		</div>
 	</div>
+	<!-- 	Main navigator -->
 	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="container">
 			<!-- Brand and toggle get grouped for better mobile display -->
@@ -63,8 +69,7 @@
 				<button type="button" class="navbar-toggle collapsed"
 					data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
 					aria-expanded="false">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand" href="#">ATLAS TITAN</a>
@@ -90,6 +95,7 @@
 			</div>
 		</div>
 	</nav>
+	<!-- 	Main container -->
 	<main class="container">
 	<div class="row">
 		<div class="col-md-6">
@@ -113,6 +119,7 @@
 		</div>
 	</div>
 	</main>
+	<!-- 	Article area -->
 	<article class="container-fluid homepage-main main-container">
 		<div class="container">
 			<div class="row">
@@ -260,6 +267,7 @@
 			</div>
 		</div>
 	</article>
+	<!-- 	Footer -->
 	<footer>
 		<div class="container footer-wrap">
 			<div class="col-md-3">
@@ -272,9 +280,10 @@
 				<p class="footer-header">Contact</p>
 				<p class="footer-text">
 					www.atlastitan.dev<br />76 Regent Rd, Sea Point<br /> <span
-						class="email-add"><a href="mailto:e-mail@atlastitan.com.au"
-						title="Contact Us">e-mail@atlastitan.com.au</a></span> <span
-						class="phone-no"><a href="tel:+6627214399030"
+						class="email-add"><a
+						href="mailto:&#101;&#045;&#109;&#097;&#105;&#108;&#064;&#097;&#116;&#108;&#097;&#115;&#116;&#105;&#116;&#097;&#110;&#046;&#099;&#111;&#109;&#046;&#097;&#117;"
+						title="Contact Us">&#101;&#045;&#109;&#097;&#105;&#108;&#064;&#097;&#116;&#108;&#097;&#115;&#116;&#105;&#116;&#097;&#110;&#046;&#099;&#111;&#109;&#046;&#097;&#117;</a></span>
+					<span class="phone-no"><a href="tel:+6627214399030"
 						title="Contact Us">+(27) 21 439 9030</a></span>
 				</p>
 			</div>
@@ -284,13 +293,14 @@
 					<option value="">Select Your Country</option>
 				</select>
 				<script>
+					// script for create option in select from json file
 					var out = '<option value="">Select Your Country</option>';
 					var i;
 					$
 							.getJSON(
 									"countries.json",
 									function(json) {
-										console.log(json); // this will show the info it in firebug console
+										console.log(json); // show object's info in console
 										for (i = 0; i < json[0]['countries'].length; i++) {
 											var tmp = json[0]['countries'][i]['name'];
 											out += '<option value="' + tmp + '">'
